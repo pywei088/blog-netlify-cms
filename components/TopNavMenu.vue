@@ -1,6 +1,6 @@
 <template>
   <div class="flex inline-flex items-center justify-center">
-    <div class="p-3 -ml-3 cursor-pointer" @click="clickNavIcon()">
+    <div class="p-3 -ml-3 cursor-pointer" @click="$emit('open-nav')">
       <div class="bar-1 mb-1" :class="iconClass('top')"></div>
       <div class="bar-2" :class="iconClass('bot')"></div>
     </div>
@@ -9,24 +9,17 @@
 
 <script>
 export default {
-  data() {
-    return {
-      isOpen: false,
-      navIconClicked: false,
-    }
+  props: {
+    isOpen: Boolean,
   },
+
   methods: {
-    clickNavIcon() {
-      this.isOpen ? (this.navIconClicked = true) : (this.navIconClicked = false)
-      this.isOpen = !this.isOpen
-      this.$emit('openNav')
-    },
     iconClass(bar) {
       return {
         'translate-1': this.isOpen && bar === 'top',
         'translate-2': this.isOpen && bar === 'bot',
-        'translate-1-reverse': this.navIconClicked && bar === 'top',
-        'translate-2-reverse': this.navIconClicked && bar === 'bot',
+        'translate-1-reverse': !this.isOpen && bar === 'top',
+        'translate-2-reverse': !this.isOpen && bar === 'bot',
       }
     },
   },

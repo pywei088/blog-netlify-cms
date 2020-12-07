@@ -28,7 +28,11 @@
       </nav>
     </transition>
     <div class="flex items-center z-50">
-      <topNavMenu @openNav="openNav = !openNav" class="lg:hidden z-50" />
+      <topNavMenu
+        :isOpen="openNav"
+        @open-nav="openNav = !openNav"
+        class="lg:hidden z-50"
+      />
       <h1 class="uppercase text-xl font-medium tracking-wider">Vallon</h1>
     </div>
     <div class="space-x-8 hidden lg:block">
