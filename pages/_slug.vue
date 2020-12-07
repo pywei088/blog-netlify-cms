@@ -1,15 +1,18 @@
 <template>
   <article class="w-full px-4">
     <header class="mt-16 text-center max-w-screen-md m-auto">
-      <h1 class="text-4xl font-bold">{{ post.title }}</h1>
+      <h1 class="text-4xl font-bold tracking-wide">{{ post.title }}</h1>
       <p class="mt-5 text-gray-600 text-xl">{{ post.description }}</p>
     </header>
     <img
       class="pt-16 ml-0 mr-auto w-781px lg:w-1140px lg:m-auto"
-      :src="post.img"
+      :src="post.src"
       alt=""
     />
-    <nuxt-content class="max-w-screen-md m-auto mt-16" :document="post" />
+    <nuxt-content
+      class="max-w-screen-md m-auto mt-16 leading-7"
+      :document="post"
+    />
   </article>
 </template>
 
