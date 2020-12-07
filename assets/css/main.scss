@@ -1,0 +1,565 @@
+$pswp__show-hide-transition-duration: 333ms !default;
+$pswp__controls-transition-duration: 333ms !default;
+$pswp__background-color: #000 !default;
+$pswp__placeholder-color: #222 !default;
+$pswp__box-sizing-border-box: true !default; // disable .pswp * { box-sizing:border-box } (in case you already have it in your site css)
+$pswp__root-z-index: 1500 !default;
+$pswp__assets-path: '' !default; // path to skin assets folder (preloader, PNG and SVG sprite)
+$pswp__error-text-color: #ccc !default; // "Image not loaded" text color
+$pswp__include-minimal-style: true !default;
+
+.pswp__bg {
+  background-color: rgb(255, 255, 255) !important;
+  opacity: 0.85 !important;
+}
+
+.pswp__top-bar {
+  background: none !important;
+}
+
+.pswp__button {
+  width: 44px !important;
+  height: 44px !important;
+  position: relative !important;
+  background: none !important;
+  cursor: pointer !important;
+  overflow: visible !important;
+  -webkit-appearance: none !important;
+  display: block !important;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  float: right !important;
+  opacity: 0.75 !important;
+  -webkit-transition: opacity 0.2s !important;
+  transition: opacity 0.2s !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+.pswp__button:focus,
+.pswp__button:hover {
+  opacity: 1 !important;
+}
+.pswp__button:active {
+  outline: none !important;
+  opacity: 0.9 !important;
+}
+.pswp__button::-moz-focus-inner {
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+/* pswp__ui--over-close class it added when mouse is over element that should close gallery */
+.pswp__ui--over-close .pswp__button--close {
+  opacity: 1 !important;
+}
+
+.pswp__button,
+.pswp__button--arrow--left:before,
+.pswp__button--arrow--right:before {
+  background: url(../../static/default-skin.png) 0 0 no-repeat !important;
+  background-size: 264px 88px !important;
+  width: 44px !important;
+  height: 44px !important;
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.1),
+  (-webkit-min-device-pixel-ratio: 1.09375),
+  (min-resolution: 105dpi),
+  (min-resolution: 1.1dppx) {
+  /* Serve SVG sprite if browser supports SVG and resolution is more than 105dpi */
+  .pswp--svg .pswp__button,
+  .pswp--svg .pswp__button--arrow--left:before,
+  .pswp--svg .pswp__button--arrow--right:before {
+    background-image: url(../../static/default-skin.svg) !important;
+  }
+  .pswp--svg .pswp__button--arrow--left,
+  .pswp--svg .pswp__button--arrow--right {
+    background: none !important;
+  }
+}
+
+.pswp__button--close {
+  background-position: 0 -44px !important;
+}
+
+.pswp__button--share {
+  background-position: -44px -44px !important;
+}
+
+.pswp__button--fs {
+  display: none !important;
+}
+
+.pswp--supports-fs .pswp__button--fs {
+  display: block !important;
+}
+
+.pswp--fs .pswp__button--fs {
+  background-position: -44px 0 !important;
+}
+
+.pswp__button--zoom {
+  display: none !important;
+  background-position: -88px 0 !important;
+}
+
+.pswp--zoom-allowed .pswp__button--zoom {
+  display: block !important;
+}
+
+.pswp--zoomed-in .pswp__button--zoom {
+  background-position: -132px 0 !important;
+}
+
+/* no arrows on touch screens */
+.pswp--touch .pswp__button--arrow--left,
+.pswp--touch .pswp__button--arrow--right {
+  visibility: hidden !important;
+}
+
+/*
+	Arrow buttons hit area
+	(icon is added to :before pseudo-element)
+*/
+.pswp__button--arrow--left,
+.pswp__button--arrow--right {
+  background: none !important;
+  top: 50% !important;
+  margin-top: -50px !important;
+  width: 70px !important;
+  height: 100px !important;
+  position: absolute !important;
+}
+
+.pswp__button--arrow--left {
+  left: 0 !important;
+}
+
+.pswp__button--arrow--right {
+  right: 0 !important;
+}
+
+.pswp__button--arrow--left:before,
+.pswp__button--arrow--right:before {
+  content: '' !important;
+  top: 35px !important;
+  background-color: hsla(0, 0%, 100%, 0.3) !important;
+  height: 30px !important;
+  width: 32px !important;
+  position: absolute !important;
+}
+
+.pswp__button--arrow--left:before {
+  left: 6px !important;
+  background-position: -138px -44px !important;
+}
+
+.pswp__button--arrow--right:before {
+  right: 6px !important;
+  background-position: -94px -44px !important;
+}
+
+.pswp__counter,
+.pswp__share-modal {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  user-select: none !important;
+}
+
+.pswp__share-modal {
+  display: block !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0 !important;
+  left: 0 !important;
+  padding: 10px !important;
+  position: absolute !important;
+  z-index: $pswp__root-z-index + 100 !important;
+  opacity: 0 !important;
+  transition: opacity 0.25s ease-out !important;
+  -webkit-backface-visibility: hidden !important;
+  will-change: opacity !important;
+}
+
+.pswp__share-modal--hidden {
+  display: none !important;
+}
+
+.pswp__share-tooltip {
+  z-index: $pswp__root-z-index + 120 !important;
+  position: absolute !important;
+  background: #fff !important;
+  top: 56px !important;
+  border-radius: 2px !important;
+  display: block !important;
+  width: auto !important;
+  right: 44px !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) !important;
+  transform: translateY(6px) !important;
+  transition: transform 0.25s !important;
+  -webkit-backface-visibility: hidden !important;
+  will-change: transform !important;
+
+  a {
+    display: block !important;
+    padding: 8px 12px !important;
+    color: #000 !important;
+    text-decoration: none !important;
+    font-size: 14px !important;
+    line-height: 18px !important;
+
+    &:hover {
+      text-decoration: none !important;
+      color: #000 !important;
+    }
+
+    &:first-child {
+      /* round corners on the first/last list item */
+      border-radius: 2px 2px 0 0 !important;
+    }
+
+    &:last-child {
+      border-radius: 0 0 2px 2px !important;
+    }
+  }
+}
+
+.pswp__share-modal--fade-in {
+  opacity: 1 !important;
+
+  .pswp__share-tooltip {
+    transform: translateY(0) !important;
+  }
+}
+
+/* increase size of share links on touch devices */
+.pswp--touch .pswp__share-tooltip a {
+  padding: 16px 12px !important;
+}
+
+a.pswp__share--facebook {
+  &:before {
+    content: '' !important;
+    display: block !important;
+    width: 0 !important;
+    height: 0 !important;
+    position: absolute !important;
+    top: -12px !important;
+    right: 15px !important;
+    border: 6px solid rgba(0, 0, 0, 0) !important;
+    border-bottom-color: #fff !important;
+    -webkit-pointer-events: none !important;
+    -moz-pointer-events: none !important;
+    pointer-events: none !important;
+  }
+
+  &:hover {
+    background: #3e5c9a !important;
+    color: #fff !important;
+
+    &:before {
+      border-bottom-color: #3e5c9a !important;
+    }
+  }
+}
+
+a.pswp__share--twitter {
+  &:hover {
+    background: #55acee !important;
+    color: #fff !important;
+  }
+}
+
+a.pswp__share--pinterest {
+  &:hover {
+    background: #ccc !important;
+    color: #ce272d !important;
+  }
+}
+
+a.pswp__share--download {
+  &:hover {
+    background: #ddd !important;
+  }
+}
+
+/*
+
+	3. Index indicator ("1 of X" counter)
+
+ */
+
+.pswp__counter {
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  height: 44px !important;
+  font-size: 13px !important;
+  line-height: 44px !important;
+  color: rgb(0, 0, 0) !important;
+  opacity: 0.75 !important;
+  padding: 0 10px !important;
+}
+
+/*
+
+	4. Caption
+
+ */
+
+.pswp__caption {
+  position: absolute !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  min-height: 44px !important;
+
+  small {
+    font-size: 11px !important;
+    color: #bbb !important;
+  }
+}
+
+.pswp__caption__center {
+  text-align: left !important;
+  max-width: 420px !important;
+  margin: 0 auto !important;
+  font-size: 13px !important;
+  padding: 10px !important;
+  line-height: 20px !important;
+  color: #ccc !important;
+}
+
+.pswp__caption--empty {
+  display: none !important;
+}
+
+/* Fake caption element, used to calculate height of next/prev image */
+.pswp__caption--fake {
+  visibility: hidden !important;
+}
+
+/*
+
+	5. Loading indicator (preloader)
+
+	You can play with it here - http://codepen.io/dimsemenov/pen/yyBWoR
+
+ */
+
+.pswp__preloader {
+  width: 44px !important;
+  height: 44px !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 50% !important;
+  margin-left: -22px !important;
+  opacity: 0 !important;
+  transition: opacity 0.25s ease-out !important;
+  will-change: opacity !important;
+  direction: ltr !important;
+}
+
+.pswp__preloader__icn {
+  width: 20px !important;
+  height: 20px !important;
+  margin: 12px !important;
+}
+
+.pswp--css_animation {
+  .pswp__preloader--active {
+    opacity: 1 !important;
+
+    .pswp__preloader__icn {
+      animation: clockwise 500ms linear infinite !important;
+    }
+
+    .pswp__preloader__donut {
+      animation: donut-rotate 1000ms cubic-bezier(0.4, 0, 0.22, 1) infinite !important;
+    }
+  }
+
+  .pswp__preloader__icn {
+    background: none !important;
+    opacity: 0.75 !important;
+    width: 14px !important;
+    height: 14px !important;
+    position: absolute !important;
+    left: 15px !important;
+    top: 15px !important;
+    margin: 0 !important;
+  }
+
+  .pswp__preloader__cut {
+    /*
+			The idea of animating inner circle is based on Polymer ("material") loading indicator
+			 by Keanu Lee https://blog.keanulee.com/2014/10/20/the-tale-of-three-spinners.html
+		*/
+    position: relative !important;
+    width: 7px !important;
+    height: 14px !important;
+    overflow: hidden !important;
+  }
+
+  .pswp__preloader__donut {
+    box-sizing: border-box !important;
+    width: 14px !important;
+    height: 14px !important;
+    border: 2px solid #fff !important;
+    border-radius: 50% !important;
+    border-left-color: transparent !important;
+    border-bottom-color: transparent !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    background: none !important;
+    margin: 0 !important;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .pswp__preloader {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    margin: 0 !important;
+    float: right !important;
+  }
+}
+
+@keyframes clockwise {
+  0% {
+    transform: rotate(0deg) !important;
+  }
+  100% {
+    transform: rotate(360deg) !important;
+  }
+}
+
+@keyframes donut-rotate {
+  0% {
+    transform: rotate(0) !important;
+  }
+  50% {
+    transform: rotate(-140deg) !important;
+  }
+  100% {
+    transform: rotate(0) !important;
+  }
+}
+
+/*
+
+	6. Additional styles
+
+ */
+
+/* root element of UI */
+.pswp__ui {
+  -webkit-font-smoothing: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: $pswp__root-z-index + 50 !important;
+}
+
+/* top black bar with buttons and "1 of X" indicator */
+.pswp__top-bar {
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  height: 44px !important;
+  width: 100% !important;
+}
+
+.pswp__caption,
+.pswp__top-bar,
+.pswp--has_mouse .pswp__button--arrow--left,
+.pswp--has_mouse .pswp__button--arrow--right {
+  -webkit-backface-visibility: hidden !important;
+  will-change: opacity !important;
+  transition: opacity $pswp__controls-transition-duration
+    cubic-bezier(0.4, 0, 0.22, 1) !important;
+}
+
+/* pswp--has_mouse class is added only when two subsequent mousemove events occur */
+.pswp--has_mouse {
+  .pswp__button--arrow--left,
+  .pswp__button--arrow--right {
+    visibility: visible !important;
+  }
+}
+
+.pswp__top-bar,
+.pswp__caption {
+  background: none !important;
+}
+
+/* pswp__ui--fit class is added when main image "fits" between top bar and bottom bar (caption) */
+.pswp__ui--fit {
+  .pswp__top-bar,
+  .pswp__caption {
+    background: none !important;
+  }
+}
+
+/* pswp__ui--idle class is added when mouse isn't moving for several seconds (JS option timeToIdle) */
+
+.pswp__ui--idle {
+  .pswp__top-bar {
+    opacity: 0 !important;
+  }
+
+  .pswp__button--arrow--left,
+  .pswp__button--arrow--right {
+    opacity: 0 !important;
+  }
+}
+
+/*
+	pswp__ui--hidden class is added when controls are hidden
+	e.g. when user taps to toggle visibility of controls
+*/
+.pswp__ui--hidden {
+  .pswp__top-bar,
+  .pswp__caption,
+  .pswp__button--arrow--left,
+  .pswp__button--arrow--right {
+    /* Force paint & create composition layer for controls. */
+    opacity: 0.001 !important;
+  }
+}
+
+/* pswp__ui--one-slide class is added when there is just one item in gallery */
+.pswp__ui--one-slide {
+  .pswp__button--arrow--left,
+  .pswp__button--arrow--right,
+  .pswp__counter {
+    display: none !important;
+  }
+}
+
+.pswp__element--disabled {
+  display: none !important;
+}
+
+@if $pswp__include-minimal-style == true {
+  .pswp--minimal--dark {
+    .pswp__top-bar {
+      background: none !important;
+    }
+  }
+}
+
+.pswp__caption__center {
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  text-align: center !important;
+  max-width: 420px !important;
+  margin: 0 auto !important;
+  font-size: 15px !important;
+  padding: 10px !important;
+  line-height: 20px !important;
+  color: rgb(27, 27, 27) !important;
+}
