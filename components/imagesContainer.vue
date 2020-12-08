@@ -78,7 +78,6 @@ export default {
       options: {
         index: 0,
       },
-      images: [],
     }
   },
   mounted() {
@@ -87,10 +86,11 @@ export default {
     window.addEventListener('resize', () => {
       this.windowWidth = window.innerWidth
     })
-    Promise.all(this.posts.map((post) => this.getImageData(post))).then(
+    const randomPosts = this.posts.sort(() => Math.random() - 0.5)
+    Promise.all(randomPosts.map((post) => this.getImageData(post))).then(
       (res) => {
         res.forEach((image) => {
-          this.posts.forEach((post) => {
+          randomPosts.forEach((post) => {
             if (post.src === image.src) {
               this.posts[post] = Object.assign(post, image)
             }
@@ -101,6 +101,10 @@ export default {
     )
   },
   methods: {
+    showPhotoSwipe(index) {
+      this.isOpen = true
+      this.$set(this.options, 'index', index)
+    },
     hidePhotoSwipe() {
       this.isOpen = false
     },

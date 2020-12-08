@@ -1,9 +1,9 @@
 ---
-title: Keagan Henman
+title: Nazar Strutynsky
 date: 2020-11-29T06:34:26.575Z
 description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel nihil
   debitis, alias odit quo accusantium sint eaque magnam quisquam, unde voluptas?
-src: https://ik.imagekit.io/l2y9nmwvse/Photo_Blog/photo-1520339766321-e0b045b26a48_rX8QCDTOP3Wh.jpeg
+src: https://ik.imagekit.io/l2y9nmwvse/Photo_Blog/photo-1516913840875-366de3e463bd_1yhmbe4Ms38F.jpeg
 tags:
   - portrait
 ---
