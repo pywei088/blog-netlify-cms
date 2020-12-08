@@ -109,7 +109,6 @@ export default {
       }
     )
   },
-
   methods: {
     head() {
       return {
