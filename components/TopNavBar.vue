@@ -33,7 +33,9 @@
         @open-nav="openNav = !openNav"
         class="lg:hidden z-50"
       />
-      <h1 class="uppercase text-xl font-medium tracking-wider">Vallon</h1>
+      <nuxt-link to="/">
+        <h1 class="uppercase text-xl font-medium tracking-wider">Vallon</h1>
+      </nuxt-link>
     </div>
     <div class="space-x-8 hidden lg:block">
       <nuxt-link v-for="(page, i) in pages" :key="i" :to="page.link">
