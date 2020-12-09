@@ -1,9 +1,9 @@
 ---
-title: David Monje
+title: Batuhan Doğan
 date: 2020-12-08T06:12:14.286Z
 description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel nihil
   debitis, alias odit quo accusantium sint eaque magnam quisquam, unde voluptas?
-src: https://ik.imagekit.io/l2y9nmwvse/Photo_Blog/Nature/photo-1489881006569-494b4a5217a1_bsG0k1vtOT_o.jpeg
+src: https://ik.imagekit.io/l2y9nmwvse/Photo_Blog/Nature/photo-1591606703571-9a28c2b78da8_fIuY9jSm-rQ.jpeg
 tags:
   - nature
 ---
