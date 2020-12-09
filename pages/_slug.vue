@@ -1,5 +1,5 @@
 <template>
-  <article class="w-full px-4">
+  <article class="w-full px-4 mb-20 text-gray-800">
     <header class="mt-16 text-center max-w-screen-md m-auto">
       <h1 class="text-4xl font-bold tracking-wide">{{ post.title }}</h1>
       <p class="mt-5 text-gray-600 text-xl">{{ post.description }}</p>

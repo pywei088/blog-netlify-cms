@@ -32,18 +32,33 @@
           </NuxtLink>
           <transition
             enter-active-class="transition ease-in-out duration-200 transform"
-            enter-class="opacity-0 scale-70"
-            enter-to-class="opacity-100 scale-100"
-            leave-active-class="transition ease-in-out duration-300 transform"
-            leave-class="opacity-100 scale-100"
-            leave-to-class="opacity-0 scale-70"
+            enter-class="opacity-0 scale-30"
+            enter-to-class="opacity-50 scale-100"
+            leave-active-class="transition ease-in-out duration-200 transform"
+            leave-class="opacity-50 scale-100"
+            leave-to-class="opacity-0 scale-30"
           >
             <button
               @click="showPhotoSwipe(i)"
-              v-show="hovered === i"
-              class="absolute shadow bottom-0 right-0 focus:outline-none m-5 bg-white rounded-full z-30"
+              v-show="hovered === i || isMobile()"
+              class="absolute shadow opacity-75 hover:opacity-100 bottom-0 right-0 focus:outline-none m-3 md:m-5 bg-white rounded-full z-30"
             >
-              <ExpandSvg class="p-2" />
+              <svg
+                class="h-6 w-6 md:h-10 md:w-10 p-1 md:p-2 opacity-75"
+                id="Layer"
+                enable-background="new 0 0 64 64"
+                height="512"
+                viewBox="0 0 64 64"
+                width="512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m26.586 34.586-14.586 14.586v-5.172c0-1.104-.896-2-2-2s-2 .896-2 2v10c0 1.104.896 2 2 2h10c1.104 0 2-.896 2-2s-.896-2-2-2h-5.172l14.586-14.586c.781-.781.781-2.047 0-2.828-.78-.781-2.048-.781-2.828 0z"
+                />
+                <path
+                  d="m54 8h-10c-1.104 0-2 .896-2 2s.896 2 2 2h5.172l-14.586 14.586c-.781.781-.781 2.047 0 2.828.391.391.902.586 1.414.586s1.023-.195 1.414-.586l14.586-14.586v5.172c0 1.104.896 2 2 2s2-.896 2-2v-10c0-1.104-.896-2-2-2z"
+                />
+              </svg>
             </button>
           </transition>
         </div>
@@ -62,12 +77,7 @@
 </template>
 
 <script>
-import ExpandSvg from '../components/ExpandSvg.vue'
-
 export default {
-  components: {
-    ExpandSvg,
-  },
   props: { posts: Array },
   data() {
     return {
@@ -101,6 +111,15 @@ export default {
     )
   },
   methods: {
+    isMobile() {
+      if (
+        /Android|webOS|iPhone|iPad|iPod|Opera Mini/i.test(navigator.userAgent)
+      ) {
+        return true
+      } else {
+        return false
+      }
+    },
     showPhotoSwipe(index) {
       this.isOpen = true
       this.$set(this.options, 'index', index)

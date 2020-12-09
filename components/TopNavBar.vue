@@ -53,6 +53,7 @@
         :key="index"
         class="focus:outline-none text-xs font-medium"
         :class="item.color"
+        @click="openSocial(item.link)"
       >
         {{ item.icon }}
       </button>
@@ -77,21 +78,21 @@ export default {
       social: [
         {
           name: 'Github',
-          link: 'github.com',
+          link: 'https://github.com/pywei088',
           icon: 'GH',
-          color: 'text-blue-500',
+          color: 'text-gray-800',
         },
         {
-          name: 'Github',
-          link: 'github.com',
-          icon: 'GH',
-          color: 'text-yellow-600',
+          name: 'Facebook',
+          link: 'https://facebook.com',
+          icon: 'FB',
+          color: 'text-blue-600',
         },
         {
-          name: 'Github',
-          link: 'github.com',
-          icon: 'GH',
-          color: 'text-red-500',
+          name: 'Twitter',
+          link: 'https://twitter.com',
+          icon: 'TW',
+          color: 'text-blue-400',
         },
       ],
     }
@@ -101,6 +102,9 @@ export default {
       return {
         'bg-gray-200': this.$nuxt.$route.path === page.link,
       }
+    },
+    openSocial(link) {
+      window.open(link, '_blank')
     },
   },
 }
