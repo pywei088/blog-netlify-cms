@@ -1,5 +1,9 @@
 # blog-netlify-cms
 
+## Demo
+
+https://gallant-stonebraker-928b6e.netlify.app/
+
 ## Build Setup
 
 ```bash
